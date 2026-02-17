@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00d9ff;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+nav button {
+  padding: 12px 24px;
+  background: #16213e;
+  color: #fff;
+  border: 1px solid #0f3460;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+nav button:hover,
+nav button.active {
+  background: #0f3460;
+  border-color: #00d9ff;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.card {
+  background: #16213e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: #e94560;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #0f3460;
+  border-radius: 4px;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.form-group button {
+  padding: 10px 20px;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-group button:hover {
+  background: #ff6b6b;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #0f3460;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li button {
+  padding: 5px 10px;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.fees-summary {
+  text-align: center;
+}
+
+.fees-summary p {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.fees-summary .total {
+  color: #00d9ff;
+  font-size: 32px;
+}

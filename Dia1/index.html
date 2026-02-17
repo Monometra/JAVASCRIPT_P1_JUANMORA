@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS ERP System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>JS ERP System</h1>
+    
+    <nav>
+      <button class="active" onclick="showSection('students')">Students</button>
+      <button onclick="showSection('courses')">Courses</button>
+      <button onclick="showSection('staff')">Staff</button>
+      <button onclick="showSection('fees')">Fees</button>
+    </nav>
+
+    <section id="students" class="section active">
+      <div class="card">
+        <h2>Add Student</h2>
+        <div class="form-group">
+          <input type="text" id="studentName" placeholder="Student name">
+        </div>
+        <div class="form-group">
+          <button onclick="addStudent()">Add Student</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Student List</h2>
+        <ul id="studentList"></ul>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <div class="card">
+        <h2>Add Course</h2>
+        <div class="form-group">
+          <input type="text" id="courseName" placeholder="Course name">
+        </div>
+        <div class="form-group">
+          <input type="text" id="courseCode" placeholder="Course code">
+        </div>
+        <div class="form-group">
+          <button onclick="addCourse()">Add Course</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Course List</h2>
+        <ul id="courseList"></ul>
+      </div>
+    </section>
+
+    <section id="staff" class="section">
+      <div class="card">
+        <h2>Add Staff</h2>
+        <div class="form-group">
+          <input type="text" id="staffName" placeholder="Staff name">
+        </div>
+        <div class="form-group">
+          <input type="text" id="staffRole" placeholder="Role (teacher/admin)">
+        </div>
+        <div class="form-group">
+          <button onclick="addStaff()">Add Staff</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Staff List</h2>
+        <ul id="staffList"></ul>
+      </div>
+    </section>
+
+    <section id="fees" class="section">
+      <div class="card fees-summary">
+        <h2>Fees Overview</h2>
+        <p class="total">$<span id="totalFees">0</span></p>
+        <p>Top Debtor: <span id="topDebtor">None</span></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let students = [];
+    let courses = [];
+    let staff = [];
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+      if (id === 'fees') updateFees();
+    }
+
+    function addStudent() {
+      const name = document.getElementById('studentName').value.trim();
+      if (!name) return alert('Enter a name');
+      const id = students.length + 1;
+      const feesOwed = Math.floor(Math.random() * 1000) + 100;
+      students.push({ id, name, feesOwed });
+      document.getElementById('studentName').value = '';
+      renderStudents();
+    }
+
+    function renderStudents() {
+      const list = document.getElementById('studentList');
+      if (students.length === 0) {
+        list.innerHTML = '<li>No students yet</li>';
+        return;
+      }
+      list.innerHTML = students.map(s => `<li>ID: ${s.id}, ${s.name} - $${s.feesOwed} <button onclick="deleteStudent(${s.id})">Delete</button></li>`).join('');
+    }
+
+    function deleteStudent(id) {
+      students = students.filter(s => s.id !== id);
+      renderStudents();
+    }
+
+    function addCourse() {
+      const name = document.getElementById('courseName').value.trim();
+      const code = document.getElementById('courseCode').value.trim();
+      if (!name || !code) return alert('Enter name and code');
+      courses.push({ name, code });
+      document.getElementById('courseName').value = '';
+      document.getElementById('courseCode').value = '';
+      renderCourses();
+    }
+
+    function renderCourses() {
+      const list = document.getElementById('courseList');
+      if (courses.length === 0) {
+        list.innerHTML = '<li>No courses yet</li>';
+        return;
+      }
+      list.innerHTML = courses.map(c => `<li>${c.code}: ${c.name}</li>`).join('');
+    }
+
+    function addStaff() {
+      const name = document.getElementById('staffName').value.trim();
+      const role = document.getElementById('staffRole').value.trim();
+      if (!name || !role) return alert('Enter name and role');
+      staff.push({ name, role });
+      document.getElementById('staffName').value = '';
+      document.getElementById('staffRole').value = '';
+      renderStaff();
+    }
+
+    function renderStaff() {
+      const list = document.getElementById('staffList');
+      if (staff.length === 0) {
+        list.innerHTML = '<li>No staff yet</li>';
+        return;
+      }
+      list.innerHTML = staff.map(s => `<li>${s.name} - ${s.role}</li>`).join('');
+    }
+
+    function updateFees() {
+      const total = students.reduce((sum, s) => sum + s.feesOwed, 0);
+      document.getElementById('totalFees').textContent = total;
+      if (students.length > 0) {
+        const top = students.reduce((a, b) => a.feesOwed > b.feesOwed ? a : b);
+        document.getElementById('topDebtor').textContent = top.name;
+      } else {
+        document.getElementById('topDebtor').textContent = 'None';
+      }
+    }
+
+    renderStudents();
+    renderCourses();
+    renderStaff();
+  </script>
+</body>
+</html>

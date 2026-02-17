@@ -56,4 +56,11 @@ function runexample1() {
   }
   log(`Before calling saluteAsync...`);
   saluteAsync(`Pedro`).then((msg)==>log(`✅️ then:`, msg))
+  .catch((err)=>log(`catch:`, err.message))
+  .finally(()=>log(`finally: The example is finished`));
 }
+runexample1();
+
+
+//Example n1
+

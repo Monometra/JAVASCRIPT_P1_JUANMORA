@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('bg/background_bj.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: #4a7c2c;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 100%;
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.game-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.player-section {
+    background-color: #3a6b1f;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+.player-section h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.cards-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 150px;
+    margin-bottom: 15px;
+    align-content: flex-start;
+}
+
+.card {
+    width: 80px;
+    height: 110px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: default;
+}
+
+.card.red {
+    color: #e74c3c;
+}
+
+.card.black {
+    color: #000;
+}
+
+.player-section p {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    background-color: #fff;
+    color: #2d5016;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover:not(:disabled) {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result {
+    background-color: #3a6b1f;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}

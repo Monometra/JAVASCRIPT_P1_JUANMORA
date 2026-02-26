@@ -21,12 +21,12 @@
 // Plantilla para promesa con dela que RESUELVE
 //
 const Solveat = (ms, value) =>
-  new Promise((resolve) => setimeout(() => resolve(value), ms));
+  new Promise((resolve) => setTimeout(() => resolve(value), ms));
 
 // Plantilla para promesa con delay que rechazada
 //
-const denyat = (ms, error) ==>
-  new Promise((_, reject) => settimeout(() => reject(error), ms));
+const denyat = (ms, error) =>
+  new Promise((_, reject) => setTimeout(() => reject(error), ms));
 //
 //
 //
@@ -42,25 +42,30 @@ const title = (n, name) => {
 
 const wait1 = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-//
-//EXAMPLE 1 
-//
-function runexample1() {
-  title(1,`First promise (resolve)`);
-  function saluteAsync(name){
-    return new Promise((resolve))==>{
-      settimeout(() => {
-        resolve(`Hi, $(name)`)        
-      },800);
-    })
-  }
-  log(`Before calling saluteAsync...`);
-  saluteAsync(`Pedro`).then((msg)==>log(`✅️ then:`, msg))
-  .catch((err)=>log(`catch:`, err.message))
-  .finally(()=>log(`finally: The example is finished`));
-}
-runexample1();
-
 
 //Example n1
+function verificarNumerosAsync(numero) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (numero % 2 === 0) {
+        resolve(`Numero valido`);
+      } else {
+        reject(new Error(`Numero es invalido`));
+      }
+    }, 500);
+  });
+}
 
+verificarNumerosAsync(4)
+  .then((res) => console.log(res))
+  .catch((res) => console.log(err.message))
+
+verificarNumerosAsync(7)
+  .then((res) => console.log(res))
+  .catch((res) => console.log(err.message))
+
+fetch(`https://www.dnd5eapi.co/api/2014/monsters`)
+.then(response => response.json())
+.then(data=>{
+  console.log(data[`results`][0]);
+});
